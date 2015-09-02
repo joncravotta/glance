@@ -52,6 +52,15 @@ function imageLogic (imageUrl){
   if (imageUrl === ""){
    return " ";
   }
+  else if (typeof imageUrl[1] === "undefined") {
+      return '<img class="news-image"src="'+imageUrl[0].url+'"/>';
+  }
+  else if (typeof imageUrl[2] === "undefined") {
+      return '<img class="news-image"src="'+imageUrl[1].url+'"/>';
+  }
+  else if (typeof imageUrl[3] === "undefined") {
+      return '<img class="news-image"src="'+imageUrl[2].url+'"/>';
+  }
   else {
     return '<img class="news-image"src="'+imageUrl[3].url+'"/>';
   }
