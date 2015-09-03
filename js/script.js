@@ -150,7 +150,7 @@ function topAnimation(){
 
 $(window).scroll(function() {
   /* Check the location of each desired element */
-  $('.news-headline, .news-headline-sub, .news-headline-desc, .news-image, .nav').each(function(i) {
+  $('.news-headline, .news-headline-sub, .news-headline-desc, .news-image, .nav, .footer').each(function(i) {
     var bottom_of_object = $(this).offset().top + $(this).outerHeight()-40;
     var bottom_of_window = $(window).scrollTop() + $(window).height();
     /* If the object is completely visible in the window, fade it it */
@@ -182,6 +182,7 @@ setInterval( function(){
         i = 0;
     }
 },1000 );
+
 //scroll when click nav link
 $('li').click(function(){
     $('html, body').animate({
@@ -189,4 +190,59 @@ $('li').click(function(){
     }, 1000);
     return false;
 });
+});
+//blue scroll nav
+$(document).ready(function(){
+    var getMax = function(){
+        return 4100;
+    };
+    var getValue = function(){
+        return $(window).scrollTop();
+    };
+    if('max' in document.createElement('progress')){
+        // Browser supports progress element
+        var progressBar = $('progress');
+        // Set the Max attr for the first time
+        progressBar.attr({ max: getMax() });
+        $(document).on('scroll', function(){
+            // On scroll only Value attr needs to be calculated
+            progressBar.attr({ value: getValue() });
+        });
+        $(window).resize(function(){
+            // On resize, both Max/Value attr needs to be calculated
+            progressBar.attr({ max: getMax(), value: getValue() });
+        });
+    }
+    else {
+        var progressBar = $('.progress-bar'),
+            max = getMax(),
+            value, width;
+        var getWidth = function(){
+            // Calculate width in percentage
+            value = getValue();
+            width = (value/max) * 100;
+            width = width + '%';
+            return width;
+        };
+        var setWidth = function(){
+            progressBar.css({ width: getWidth() });
+        };
+        $(document).on('scroll', setWidth);
+        $(window).on('resize', function(){
+            // Need to reset the Max attr
+            max = getMax();
+            setWidth();
+        });
+    }
+});
+
+
+$(document).ready(function(){
+  $('#flat').addClass("active");
+  $('#progressBar').addClass('flat');
+  $(document).on('scroll', function(){
+      maxAttr = $('#progressBar').attr('max');
+      valueAttr = $('#progressBar').attr('value');
+      percentage = (valueAttr/maxAttr) * 100;
+  });
 });
