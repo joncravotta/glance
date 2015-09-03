@@ -140,7 +140,7 @@ function dateConversion(date) {
   var n = weekday[d.getUTCDay()];
   return n;
 }
-//when hero button is clicked
+//when hero button is clicked makes her smaller
 function topAnimation(){
   $('.heading').animate({
     "height":"50vh"
@@ -159,9 +159,23 @@ $(window).scroll(function() {
         'opacity': '1'
       }, 800);
     }
+    if ($(window).scrollTop() > 345) {
+        $('.nav').css('position', 'fixed');
+    }
+    if ($(window).scrollTop() < 345) {
+        $('.nav').css('position', 'relative');
+    }
   });
+
+
 });
 
+$(window).scroll(function () {
+    if ($(window).scrollTop() > 100) {
+        $('#scroller').css('position', 'fixed');
+    }
+}
+);
 $( document ).ready(function() {
 var words = new Array('town','office','water cooler', 'school', 'bathroom','hallway','building');
 var i = 0;
@@ -173,4 +187,11 @@ setInterval( function(){
         i = 0;
     }
 },1000 );
+//scroll when click nav link
+$('li').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $(this).attr('href') ).offset().top
+    }, 500);
+    return false;
+});
 });
