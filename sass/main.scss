@@ -24,7 +24,6 @@ body {
 .heading {
   background-color: blue;
   color: white;
-  padding-top: 35px;
   height: 100vh;
   display: -webkit-flex; /* Safari */
   -webkit-align-items: center; /* Safari 7.0+ */
@@ -129,30 +128,11 @@ body {
 .news-headline,
 .news-headline-desc,
 .news-headline-sub,
-.news-image {
+.news-image,
+.nav {
   opacity: 0;
 }
-@media (max-width: 600px) {
-  .news-headline-section {
-    padding: 25px 25px;
-  }
-  .news-headline-section-weather{
-    padding: 25px 25px 0px 25px;
-  }
-  .weather-section {
-    flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-    padding: 0 5px;
-    justify-content: flex-start;
-    -webkit-justify-content: flex-start;
-  }
-  .heading {
-  height: 85vh;
-  }
-  .weather-day {
-    padding: 0 20px;
-  }
-}
+
 
 
 .arrow-down {
@@ -174,7 +154,7 @@ body {
 .nav {
     position: relative;
      top: 0;
-    float: left;
+    margin: auto;
 }
 .nav-header {
   font-family: sans-serif;
@@ -184,14 +164,53 @@ body {
   padding-bottom: 5px;
   padding-top: 10px;
 }
+.border-blue-nav {
+  height: 5px;
+  background-color: blue;
+  margin: auto auto 10px;
+  width: 75px;
+  float: left;
+}
 ul {
   padding: 0;
 }
 .nav-list li{
 list-style: none;
 font-family: arial;
+padding: 3px 0;
 &:hover {
   color: blue;
   cursor: pointer;
+  text-decoration: underline;
 }
+}
+@media (max-width: 600px) {
+  .news-headline-section {
+    padding: 25px 25px;
+  }
+  .news-headline-section-weather{
+    padding: 25px 25px 0px 25px;
+  }
+  .weather-section {
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    padding: 0 5px;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+  }
+  .heading {
+  height: 95vh;
+  }
+  .weather-day {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 768px) {
+  .container-right {
+    display: none;
+  }
+  .container-left {
+    width: 100%;
+    float: none;
+  }
 }

@@ -97,8 +97,8 @@ function displaySports(data) {
     var date = data.results[i].published_date;
     var desc = data.results[i].abstract;
     var link = data.results[i].url;
-    var img = data.results[i].multimedia[3].url;
-    $(".news-headline-content-sports").append('<div class="news-headline"><a target="_blank" href="' + link + '">' + title + '</a></div>' + '<img class="news-image"src="'+img+'"/>'+ '<div class="news-headline-desc">' + desc + '</div>' + '<div class="news-headline-sub">' + date + '</div>');
+    var img = imageLogic(data.results[i].multimedia);
+    $(".news-headline-content-sports").append('<div class="news-headline"><a target="_blank" href="' + link + '">' + title + '</a></div>' + img + '<div class="news-headline-desc">' + desc + '</div>' + '<div class="news-headline-sub">' + date + '</div>');
   }
 }
 
@@ -150,7 +150,7 @@ function topAnimation(){
 
 $(window).scroll(function() {
   /* Check the location of each desired element */
-  $('.news-headline, .news-headline-sub, .news-headline-desc, .news-image').each(function(i) {
+  $('.news-headline, .news-headline-sub, .news-headline-desc, .news-image, .nav').each(function(i) {
     var bottom_of_object = $(this).offset().top + $(this).outerHeight()-40;
     var bottom_of_window = $(window).scrollTop() + $(window).height();
     /* If the object is completely visible in the window, fade it it */
@@ -170,12 +170,7 @@ $(window).scroll(function() {
 
 });
 
-$(window).scroll(function () {
-    if ($(window).scrollTop() > 100) {
-        $('#scroller').css('position', 'fixed');
-    }
-}
-);
+
 $( document ).ready(function() {
 var words = new Array('town','office','water cooler', 'school', 'bathroom','hallway','building');
 var i = 0;
@@ -191,7 +186,7 @@ setInterval( function(){
 $('li').click(function(){
     $('html, body').animate({
         scrollTop: $( $(this).attr('href') ).offset().top
-    }, 500);
+    }, 1000);
     return false;
 });
 });
