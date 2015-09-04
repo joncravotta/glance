@@ -194,7 +194,7 @@ $('li').click(function(){
 //blue scroll nav
 $(document).ready(function(){
     var getMax = function(){
-        return 4100;
+        return 5700;
     };
     var getValue = function(){
         return $(window).scrollTop();
