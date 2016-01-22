@@ -29,10 +29,16 @@ request.oauth! http, consumer_key, access_token
 http.start
 response = http.request request
 
-puts "The response status was #{response.code}"
-tweets = JSON.parse(response.body)
+# puts "The response status was #{response.code}"
+tweetsJson = JSON.parse(response.body)[0]
+trends  = tweetsJson["trends"]
 
-
-
-clean = JSON.pretty_generate(tweets)
-puts clean
+puts "Twitter trends:"
+puts "~~~~~~~~~~~~~~~"
+trends.each do |tweet|
+  if (tweet["tweet_volume"])
+    puts "#{tweet["name"]}, #{tweet["tweet_volume"]} tweets "
+  else
+    puts "#{tweet["name"]}"
+  end
+end

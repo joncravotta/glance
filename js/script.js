@@ -1,5 +1,4 @@
-
-  // body...
+// body...
 $(".button").one( "click",function() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(weather);
