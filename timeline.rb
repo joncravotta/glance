@@ -34,5 +34,5 @@ tweets_json = JSON.parse(response.body)
 
 tweets_json.each do |tweet|
   puts "#{tweet['user']['name']} - #{tweet['text']}"
-  puts '=================================================='
+  puts '=========================================================================================='
 end
