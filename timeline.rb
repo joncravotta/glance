@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'oauth'
 require 'json'
+require 'time'
 
 consumer_key = OAuth::Consumer.new(
     "3z3g8YSxbdLq2aAQmToK7EqYK",
@@ -32,7 +33,15 @@ response = http.request request
 # puts "The response status was #{response.code}"
 tweets_json = JSON.parse(response.body)
 
+  def formatter(tweet_date)
+    t = Time.parse(tweet_date)
+    min = t.min
+    hour = t.hour
+    "#{hour}:#{min}"
+  end
+
 tweets_json.each do |tweet|
-  puts "#{tweet['user']['name']} - #{tweet['text']}"
-  puts '*<><><><><><><><><><><><><><><><><><><><><>*'
+  tweet_date = formatter(tweet['created_at'])
+  puts "#{tweet['user']['name']} @ #{tweet_date} - #{tweet['text']}"
+  puts '<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>'
 end
