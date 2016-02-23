@@ -15,7 +15,7 @@ baseurl = "https://api.twitter.com"
 
 # The verify credentials endpoint returns a 200 status if
 # the request is signed correctly.
-address = URI("#{baseurl}/1.1/statuses/home_timeline.json?exclude_replies=true&count=200&include_rts=false")
+address = URI("#{baseurl}/1.1/statuses/home_timeline.json?exclude_replies=true&count=1&include_rts=false")
 
 # Set up Net::HTTP to use SSL, which is required by Twitter.
 http = Net::HTTP.new address.host, address.port
@@ -35,9 +35,7 @@ tweets_json = JSON.parse(response.body)
 
   def formatter(tweet_date)
     t = Time.parse(tweet_date)
-    min = t.min
-    hour = t.hour
-    "#{hour}:#{min}"
+    t.strftime("%I:%M")
   end
 
 tweets_json.each do |tweet|
