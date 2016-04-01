@@ -41,7 +41,8 @@ tweets_json = JSON.parse(response.body)
 tweets_json.each do |tweet|
   tweet_date = formatter(tweet['created_at'])
   puts "\n"
+  puts "\n"
   puts "#{tweet['user']['name']} @ #{tweet_date} - #{tweet['text']}"
   puts "\n"
-  puts '<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>'
+  puts "\n"
 end
